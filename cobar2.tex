@@ -1,0 +1,38 @@
+\documentclass{amsart}
+\input{aux/style}
+\input{aux/usualcmds}
+\addbibresource{aux/usualpapers.bib}
+
+%%%%%%%%%%%%%%%%%%%%%%
+
+\input{aux/commands} % add new commands
+\addbibresource{aux/bibliography.bib} % add references
+
+\title{Part 2}
+
+\author[A. Medina-Mardones]{Anibal M. Medina-Mardones}
+\address{A.M-M., LAGA, Universit\'e Sorbonne Paris Nord}
+\email{\href{medina-mardones@math.univ-paris13.fr}{medina-mardones@math.univ-paris13.fr}}
+
+\author[M. Rivera]{Manuel Rivera}
+\address{M.R., Department of Mathematics, Purdue University}
+\email{\href{mailto:manuelr@purdue.edu}{manuelr@purdue.edu}}
+
+\subjclass[2020]{57T30, 55P35, 18N70, 55U10, 55N45, 55S05}
+\keywords{cobar construction, ${E_\infty}$-structures, loop spaces, simplicial sets, Steenrod operations}
+
+\input{aux/figures}
+
+\begin{document}
+	\input{aux/abstract}
+	\maketitle
+	\input{sec/introduction}
+	\input{sec/acknowledgements}
+	\input{sec/preliminaries}
+	\input{sec/operads}
+	\input{sec/monoidal}
+	\input{sec/theorem1}
+	\input{sec/theorem2}
+	\sloppy
+    \printbibliography
+\end{document}

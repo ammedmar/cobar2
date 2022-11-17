@@ -1,0 +1,284 @@
+% !TEX root = ../cobar.tex
+
+\section{Monoidal properties of \texorpdfstring{$\UM$}{UM}-coalgebras} \label{s:monoidal}
+
+The first goal of this section is to construct a monoidal structure on $\coAlg_\UM$.
+We will do so by providing $\M$ with the structure of a Hopf prop.
+Then, we will show that the functor $\cchainsUM \colon \cSet \to \coAlg_{\UM}$ defined in \cref{ss:e-infty on cubical} is monoidal.
+
+\subsection{Monoidal structures on presheaves} \label{ss:day convolution}
+
+Let $\sA$ be a small category and $P$ and $P^\prime$ two presheaves over $\sA$.
+Their \textit{Cartesian product} is defined by
+\[
+(P \times P^\prime)(a) = P(a) \times P^\prime(a),
+\]
+and, if $(\sA, \otimes)$ is a monoidal category, their \textit{Day convolution product} by
+\[
+P \otimes P^\prime \, = \! \colim_{\substack{\yoneda(a) \to P \\ \yoneda(a^\prime) \to P^\prime}} \yoneda(a \otimes a^\prime).
+\]
+These constructions induce natural monoidal structures on the category of presheaves over $\sA$.
+
+We will consider $\sSet$ with the Cartesian product and $\cSet$ with Day convolution.
+
+
+\subsection{Triangulation and its right adjoint} \label{ss:triangulation and its adjoint}
+
+As we recall below, simplicial and cubical sets can be related using the simplicial cubes $(\simplex^1)^{\times n}$, which define a functor $\cube \to \sSet$.
+
+The \textit{triangulation} functor $\triangulate \colon \cSet \to \sSet$ is the Yoneda extension of this functor.
+Explicitly,
+\[
+\triangulate(Y) = \colim_{\cube^n \to Y} (\simplex^1)^{\times n}.
+\]
+It has a right adjoint $\mathcal{U} \colon \sSet \to \cSet$ which is given by the formula
+\[
+\mathcal{U}(X)_n = \sSet \big( (\simplex^1)^{\times n}, X \big).
+\]
+
+With the monoidal structure defined in \cref{ss:day convolution}, the triangulation functor is monoidal.
+Thus, it induces a functor
+\[
+\triangulate \colon \Mon_{\cSet} \to \Mon_{\sSet}
+\]
+between the associated categories of monoids.
+
+\subsection{Serre coalgebra} \label{ss:serre coalgebra sym monoidal}
+
+Recall that both $\Ch$ and $\coAlg$ are symmetric monoidal categories.
+If $\cSet$ is equipped with the Day convolution monoidal structure (\cref{ss:day convolution}), then the functors $\cchains$ and its lift $\cchainsA$ are monoidal.
+Together with straightforward computations, these statements follow from the fact that the chain complexes $\chains(\cube^p) \otimes \chains(\cube^q)$ and $\chains(\cube^{p+q})$ are canonically isomorphic for any $p, q \geq 0$.
+
+For later reference we record the following consequence of the previous claims and the fact that, for any coalgebra, the braiding $x \otimes y \mapsto (-1)^{\bars{x} \bars{y}} y \otimes x$ is a morphism of coalgebras.
+
+\begin{lemma} \label{l:serre diagonal invariant}
+	Let $\sigma \in \S_d$ acting on $\chains(\cube^1)^{\otimes d}$ by permuting tensor factors, then
+	\[
+	\begin{tikzcd}
+		\chains(\cube^1)^{\otimes d} \arrow[r, "\Delta"] \arrow[d, "\sigma"] &
+		\chains(\cube^1)^{\otimes d} \otimes \chains(\cube^1)^{\otimes d} \arrow[d, "\sigma \otimes \sigma"] \\
+		\chains(\cube^1)^{\otimes d} \arrow[r, "\Delta"] &
+		\chains(\cube^1)^{\otimes d} \otimes \chains(\cube^1)^{\otimes d}
+	\end{tikzcd}
+	\]
+	commutes.
+\end{lemma}
+
+\subsection{Alexander--Whitney coalgebra}
+
+The functors of simplicial chains $\schains$ and its lift $\schainsA$ to $\coAlg$ (\cref{ss:aw coalgebra}) are not monoidal in the strict sense.
+Nonetheless, with the Eilenberg--Zilber map $\schains(X) \otimes \schains(Y) \to \schains(X \times Y)$ they are lax monoidal functors, a sufficient condition for monoids to be sent to monoids.
+
+\subsection{Hopf operads and \pdfEinfty-bialgebras}
+
+So far we have consider operad and props over the category $\Ch$ but, since $\coAlg$ is also a symmetric monoidal category, we can consider them over $\coAlg$.
+That is to say, demand that all defining chain complexes be coalgebras and all compositions be morphisms of these.
+We refer to operads and props over $\coAlg$ as \textit{Hopf operads and props} respectively.
+
+If $\cO$ is a Hopf operad, the category $\coAlg_\cO$ is monoidal.
+The structure maps of a product of $\cO$-coalgebras $C \otimes C^\prime$ are given by
+\[
+\begin{tikzcd} [column sep = normal, row sep=normal]
+	\cO(r) \otimes (C \otimes C^\prime) \arrow[r, "\Delta_\cO \otimes \id"] &[10 pt] \cO(r) \otimes \cO(r) \otimes (C \otimes C^\prime) \arrow[d, "Sh"'] &[-0pt] \\ &
+	\big(\cO(r) \otimes C \big) \otimes \big( \cO(r) \otimes C \big) \arrow[r] &
+	C^{\otimes r} \otimes C^{\prime\, \otimes r} \arrow[d, "Sh"] \\
+	& & (C \otimes C^\prime)^{\otimes r}.
+\end{tikzcd}
+\]
+If $\cO$ is a Hopf $E_\infty$-operad we refer to monoids in $\coAlg_\cO$ as $E_\infty$-\textit{bialgebras}.
+
+Similarly, if $\cP$ is a Hopf prop then its category of representations is also monoidal.
+
+\subsection{Cubical structure on $\M$}
+
+We will now revisit from \cref{ss:definition of M} the definition of $\M$ and provide this prop with a cubical structure.
+We will use this in \cref{ss:hopf prop M} to provide $\M$ with the structure of a Hopf prop.
+
+We start with a general observation.
+As explained in \cref{ss:free constructions}, the $(m,n)$-part of the free prop generated by an $\S$-module $N$ is given by
+\[
+\free(N)(m,n) \ = \bigoplus_{\Gamma \in \graphs(m,n)} \bigotimes_{v \in Vert(\Gamma)} out(v) \otimes_{\S_q} N(p, q) \otimes_{\S_p} in(v),
+\]
+which is well defined only up to a choice of total order on the set of vertices of the $(m,n)$-graphs involved.
+
+In the case we are concern with, the free prop whose quotient defines $\M$ is generated by the $\S$-bimodule $M$ with:
+\[
+M(1,0) = \k \Big\{ \; \raisebox{-3pt}{\counit} \ \Big\}, \qquad
+M(1,2) = \k[\S_2] \Big\{ \, \raisebox{-2.5pt}{\coproduct} \hspace*{2pt} \Big\},
+\]
+\[
+M(2,1) =
+\k[\S_2^\op] \Big\{ \partial_0 \raisebox{-2.5pt}{\product} \hspace*{1pt} \Big\} \xleftarrow{1 - T}
+\k[\S_2^\op] \Big\{ \, \raisebox{-2.5pt}{\product} \hspace*{2pt} \Big\},
+\]
+and $M(m,n) = 0$ otherwise.
+We notice that the elements $\rightboundary\,$ and $\,\leftboundary\,$ in $\free(M)(2,1)$ are interchanged by the action of $T \in \S_2^\op$.
+Let $\widetilde{\M}$ be the quotient of $\free(M)$ by the ideal generated by the identification of $\,\partial_0 \raisebox{-1.5pt}{\product}$ and $\,\rightboundary\,$, so that the boundary of $\product$ is $\,\boundary\,$.
+Consider a basis element of $\widetilde{\M}(m,n)_d$ represented by an immersed $(m,n)$-graph $\Gamma$ with $d$ occurrences of $\product$.
+A choice of total order of the vertices of $\Gamma$ defines a chain map
+\begin{equation} \label{e:order chain map}
+	\begin{tikzcd}[row sep=0, column sep=small]
+		\iota_\Gamma \colon \chains(\cube^d) \arrow[r] & \widetilde{\M}(m,n) \\
+		\qquad {[0,1]}^{\otimes d} \arrow[r, |->] & \Gamma,
+	\end{tikzcd}
+\end{equation}
+referred to as the \textit{characteristic map of $\Gamma$}.
+We obtain characteristic maps on $\M$ simply by composing these with the projection $\widetilde{\M} \to \M$ induced from the quotient by the prop ideal generated by the relations \eqref{e:relations of M}.
+
+\subsection{Hopf structure on $\M$} \label{ss:hopf prop M}
+
+We now use the existence of characteristic maps on $\M$ to show it is a prop over $\coAlg$.
+We will show the following is well defined in \cref{t:cubical structure on M}.
+
+\begin{definition}
+	The \textit{coproduct} $\Delta_\M \colon \M \to \M^{\otimes 2}$ is defined on basis elements $\Gamma$ by
+	\[
+	\Delta_{\M}(\Gamma) = \iota_\Gamma^{\otimes 2} \circ \Delta \left( [0,1]^{\otimes d} \right),
+	\]
+	where $d = \bars{\Gamma}$, and the \textit{counit} $\epsilon_\M \colon \M \to \underline{\k}$ by requiring $\epsilon_M(\Gamma) = 1$ if the degree of $\Gamma$ is $0$, where $\underline{\k}$ is the $\S$-bimodule with $\underline{\k}(m,n) = \k$.
+\end{definition}
+
+We remark that this coalgebra structure is obtained by extending monoidally to directed graphs the assignments:
+\begin{align*}
+	&\Delta_\M && \varepsilon_\M \\
+	\coproduct & \mapsto \coproduct \otimes \coproduct \,, &
+	\coproduct & \mapsto 1, \\
+	\counit \ & \mapsto \ \counit \ \otimes \ \counit \,, &
+	\counit \ & \mapsto 1, \\
+	\product & \mapsto \rightboundary \ \otimes \product + \product \otimes \ \leftboundary \,, &
+	\coproduct & \mapsto 0.
+\end{align*}
+
+\begin{theorem} \label{t:cubical structure on M}
+	The maps $\Delta_\M$ and $\varepsilon_\M$ are well defined and make $\M$ into a Hopf prop.
+\end{theorem}
+
+\begin{proof}
+	By \cref{l:serre diagonal invariant} these maps are independent of the total order on vertices used to define characteristic maps.
+
+	The linear map $\Delta_\M$ is compatible with the relations defining $\M$ since
+	\begin{center}
+		\hspace*{2cm}
+		\begin{tikzcd}
+			\leftcounitcoproduct \arrow[r, "\Delta_\M"] \arrow[d, <->] &[-0pt] \leftcounitcoproduct \otimes \leftcounitcoproduct \arrow[d, <->] \\
+			\identity \arrow[r, "\Delta_\M"] & \ \, \identity \otimes \identity \, ,
+		\end{tikzcd}
+		\hfill
+		\begin{tikzcd}
+			\rightcounitcoproduct \arrow[r, "\Delta_\M"] \arrow[d, <->] &[-0pt] \rightcounitcoproduct \otimes \rightcounitcoproduct \arrow[d, <->] \\
+			\identity \arrow[r, "\Delta_\M"] & \ \, \identity \otimes \identity \, ,
+		\end{tikzcd}
+		\hspace*{2cm}
+	\end{center}
+	\begin{center}
+		\hspace*{2cm}
+		\begin{tikzcd}
+			\leftcomb \arrow[r, "\Delta_\M"] \arrow[d, <->] &[-0pt] \leftcomb \, \otimes \leftcomb \arrow[d, <->] \\
+			\rightcomb \arrow[r, "\Delta_\M"] & \, \rightcomb \, \otimes \rightcomb,
+		\end{tikzcd}
+		\hfill
+		\begin{tikzcd}
+			\productcounit \arrow[r, "\Delta_\M"] \arrow[d, <->] &[-0pt] \counit\ \counit \, \otimes \productcounit + \productcounit \otimes \, \counit\ \counit \arrow[d, <->] \\
+			0 \arrow[r, "\Delta_\M"] & \ 0.
+		\end{tikzcd}
+		\hspace*{.6cm}
+	\end{center}
+	It is a chain map since
+	\begin{center}
+		\qquad
+		\begin{tikzcd}
+			\counit \arrow[r, "\Delta_\M"] \arrow[d, "\partial"'] &[-0pt] \counit \otimes \counit \arrow[d, "\partial"'] \\
+			0 \arrow[r, "\Delta_\M"] & \ \, 0 \, ,
+		\end{tikzcd}
+		\hfill
+		\begin{tikzcd}
+			\coproduct \arrow[r, "\Delta_\M"] \arrow[d, "\partial"'] &[-0pt] \coproduct \otimes \coproduct \arrow[d, "\partial"'] \\
+			0 \arrow[r, "\Delta_\M"] & \ \, 0 \, ,
+		\end{tikzcd}
+		\hfill
+		\begin{tikzcd}
+			\product \arrow[r, "\Delta_\M"] \arrow[d, "\partial"'] &[-0pt] \leftboundary \ \otimes \product + \product \otimes\ \rightboundary \arrow[d, "\partial"'] \\
+			\rightboundary \,-\, \leftboundary \arrow[r, "\Delta_\M"] &
+			\, \rightboundary \otimes \rightboundary \,-\, \leftboundary \otimes \leftboundary\,.
+		\end{tikzcd}
+	\end{center}
+	One can check similarly that $\varepsilon_\M$ is a well defined morphism of $\S$-bimodules.
+
+	Since we are using the Serre coalgebra structure, for each biarity $(m,n)$ we obtain a coalgebra.
+	Furthermore, $\Delta_\M$ is compatible with the composition structure since for any pair of characteristic maps $\iota_\Gamma$ and $\iota_{\Gamma^\prime}$, the chain map $\iota_\Gamma \otimes \iota_{\Gamma^\prime}$ is a characteristic map for any composition of $\Gamma$ and $\Gamma^\prime$ with the induced order on vertices.
+	The compatibility of $\epsilon_\M$ is immediate.
+\end{proof}
+
+\subsection{Monoidal \pdfEinfty-structures}
+
+We now prove the main technical result of this paper.
+
+\begin{lemma} \label{l:cubical e-infty chains are monoidal}
+	The functor $\cchainsUM \colon \cSet \to \coAlg_\UM$ is monoidal.
+\end{lemma}
+
+\begin{proof}
+	It suffices to prove this result for chains on the standard cubes.
+	These are equipped with a natural $\M$-structure, and we will prove the stronger statement that the functor $\mathrm{N}^\cube_\M \colon \cube \to \biAlg_{\M}$ is monoidal.
+
+	From \cref{ss:serre coalgebra sym monoidal} we know that the Serre diagonal and the augmentation map are compatible with the monoidal structure on the site $\cube$.
+	We need to establish this for the map $\ast$, the image of the generator $\product$.
+	Diagrammatically, this is equivalent to the commutativity of
+	\begin{equation} \label{e:hopf diagonal and the product}
+		\begin{tikzcd}
+			\product \otimes \chains(\cube^{p+q})^{\otimes 2} \arrow[d] \arrow[r, "\Delta_\M \otimes Sh"] &[20pt]
+			\left(\, \ \leftboundary \ \otimes \product + \product \otimes \ \rightboundary \ \, \right) \otimes \chains(\cube^{p})^{\otimes 2} \otimes \chains(\cube^{q})^{\otimes 2} \arrow[d]\\
+			\chains(\cube^{p+q}) \arrow[r, "\cong"] &
+			\, \chains(\cube^{p}) \otimes \chains(\cube^{q}).
+		\end{tikzcd}
+	\end{equation}
+
+	Since this commutativity is immediate for $p = 0$ or $q = 0$ and $\chains(\cube^n) \cong \chains(\cube^1)^{\otimes n}$, we only need to verify it for $p = q = 1$.
+
+	Consider $(x_1 \otimes y_1) \otimes (x_2 \otimes y_2) \in \chains(\cube^1)^{\otimes 2} \otimes \chains(\cube^1)^{\otimes 2}$.
+	We have that
+	\[
+	\big((\id \otimes \varepsilon) \otimes \ast \ + \ \ast \otimes (\varepsilon \otimes \Delta)\big) \ (-1)^{\bars{y_1} \bars{x_2}} \ (x_1 \otimes x_2) \otimes (y_1 \otimes y_2)
+	\]
+	is equal to
+	\begin{align*}
+		& (-1)^{\bars{y_1} \bars{x_2} + \bars{x_1} + \bars{x_2} + \bars{y_1}} \ x_1 \cdot \varepsilon(x_2) \otimes y_1 \ast y_2 \\ + \
+		& (-1)^{\bars{y_1} \bars{x_2} + \bars{x_1}} \ x_1 \ast x_2 \otimes \varepsilon(y_1) \cdot y_2.
+	\end{align*}
+	The first summand is non-zero only if $\bars{x_2} = \bars{y_1} = \bars{y_2} = 0$, whereas the second is non-zero only if $\bars{x_1} = \bars{x_2} = \bars{y_1} = 0$, so the above is also equal to
+	\begin{equation} \label{e:join is monoidal 1}
+		(-1)^{\bars{x_1}} \ x_1 \cdot \varepsilon(x_2) \otimes y_1 \ast y_2 \ + \
+		x_1 \ast x_2 \otimes \varepsilon(y_1) \ast y_2.
+	\end{equation}
+	On the other hand,
+	\begin{align*}
+		(x_1 \otimes y_1) \ast (x_2 \otimes y_2) \ & =\
+		(-1)^{\bars{x_1} + \bars{y_1}} \ (x_1 \ast x_2) \otimes \varepsilon(y_1) \cdot y_2 \\ & +\
+		(-1)^{\bars{x_1} + \bars{y_1}} \ x_1 \cdot \varepsilon(x_2) \otimes (y_1 \ast y_2) \\ \ & =\
+		(x_1 \ast x_2) \otimes \varepsilon(y_1) \cdot y_2 \\ & +\
+		(-1)^{\bars{x_1}} \ x_1 \cdot \varepsilon(x_2) \otimes (y_1 \ast y_2),
+	\end{align*}
+	which is equal to \eqref{e:join is monoidal 1} as claimed.
+\end{proof}
+
+%	In diagrammatic terms,
+%	\[
+%	\begin{tikzcd}
+	%	\coproduct \otimes \chains(\cube^{p+q}) \arrow[r, "\Delta_\M \otimes Sh"] \arrow[d] &[20pt]
+	%	\left( \ \coproduct \otimes \coproduct \ \right) \otimes
+	%	\chains(\cube^{p}) \otimes \chains(\cube^{q}) \arrow[d] \\
+	%	\chains(\cube^{p+q})^{\otimes 2} \arrow[r, "Sh"] &
+	%	\chains(\cube^{p})^{\otimes 2} \otimes \chains(\cube^{q})^{\otimes 2}
+	%	\end{tikzcd}
+%	\]
+%	and
+%	\[
+%	\begin{tikzcd}
+	%	\counit \ \otimes \chains(\cube^{p+q}) \arrow[r, "\Delta_\M \otimes Sh"] \arrow[d] &[20pt]
+	%	\left( \ \counit \ \otimes \ \counit \ \right) \otimes
+	%	\chains(\cube^{p}) \otimes \chains(\cube^{q}) \arrow[d] \\
+	%	R \arrow[r, "\cong"] &
+	%	R \otimes R
+	%	\end{tikzcd}
+%	\]
+%	commute.
