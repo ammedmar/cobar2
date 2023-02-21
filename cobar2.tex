@@ -3,11 +3,12 @@
 \input{aux/usualcmds}
 \addbibresource{aux/usualpapers.bib}
 
-%%%%%%%%%%%%%%%%%%%%%%
+% Add packages, commands and bib entries below
+\input{aux/packages}
+\input{aux/commands}
+\addbibresource{aux/bibliography.bib}
 
-\input{aux/commands} % add new commands
-\addbibresource{aux/bibliography.bib} % add references
-
+% Metadata
 \title{Part 2}
 
 \author[A. Medina-Mardones]{Anibal M. Medina-Mardones}
@@ -19,20 +20,26 @@
 \email{\href{mailto:manuelr@purdue.edu}{manuelr@purdue.edu}}
 
 \subjclass[2020]{57T30, 55P35, 18N70, 55U10, 55N45, 55S05}
-\keywords{cobar construction, ${E_\infty}$-structures, loop spaces, simplicial sets, Steenrod operations}
+\keywords{loop spaces, Kan loop group, cobar construction, rigidification, ${E_\infty}$-structures}
 
-\input{aux/figures}
+%\input{aux/figures}
 
 \begin{document}
-	\input{aux/abstract}
+%	\input{aux/abstract}
 	\maketitle
-	\input{sec/introduction}
-	\input{sec/acknowledgements}
-	\input{sec/preliminaries}
-	\input{sec/operads}
-	\input{sec/monoidal}
-	\input{sec/theorem1}
-	\input{sec/theorem2}
+	\tableofcontents
+%	\input{sec/introduction}
+%	\input{sec/acknowledgements}
+%	\input{sec/preliminaries}
+%	\input{sec/operads}
+%	\input{sec/monoidal}
+%	\input{sec/theorem1}
+	\input{sec/kan}
+	\input{sec/cobar}
+	\input{sec/rigidification}
+	\input{sec/e-infty}
+%	\input{sec/theorem2}
 	\sloppy
     \printbibliography
+    \todos
 \end{document}

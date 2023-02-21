@@ -1,0 +1,165 @@
+% !TEX root = ../cobar2.tex
+
+\section{Categorical comparison}
+
+\subsection{Rigidification and homotopy coherent nerve}\label{ss:rigidification}
+
+In order to relate the functors $\ccobarE \colon \sSet^0 \to \Mon_{\cSet}$ and $\kan \colon \sSet^0\to \sGrp$ we introduce a third construction, the \textit{rigidification functor}
+\[
+\rigid \colon \sSet^0 \to \Mon_{\sSet}.
+\]
+This functor is obtained by restricting to $\sSet^0$ a more general construction
+\[
+\rigid \colon \sSet \to \Cat_{\simplex},
+\]
+where $\Cat_{\simplex}$ denotes the category of small categories enriched over $\sSet$.
+We now recall the construction and refer to \cite{dugger2011rigidification} for further details.
+
+Given integers $0 \leq i \leq j$ denote by $P_{i,j}$ the category whose objects are all the subsets of $\{i, i+1, \dots, j\}$ containing both $i$ and $j$ and morphisms are inclusions.
+For each integer $n \geq 0$ define $\rigid(\simplex^n) \in \Cat_{\simplex}$ to have the set $\{0, \dots, n\}$ as objects and if $i \leq j$, define $\rigid(\simplex^n)(i,j)= N(P_{i,j})$, where $N$ is the ordinary nerve functor.
+If $j < i$, $\rigid(\simplex^n)(i,j) = \emptyset$.
+The composition law in $\rigid(\simplex^n)$ is induced by the functor $P_{j,k} \times P_{i,k} \to P_{i,k}$ defined as the union of sets.
+The assignment $[n] \mapsto \rigid(\simplex^n)$ defines a cosimplicial object in $\Cat_{\simplex}$.
+For any reduced simplicial set $S$ we can now define
+\[
+\rigid(S) = \colim_{\simplex^n \to S} \rigid(\simplex^n).
+\]
+
+The functor $\rigid$ has a right adjoint, called the \textit{homotopy coherent nerve functor} and denoted by
+\[
+\nerve \colon \Cat_{\simplex} \to \sSet,
+\]
+whose $n$-simplices are given by
+\[
+\nerve(\mathcal{C})_n = \Hom_{\Cat_{\simplex}}(\rigid(\simplex^n), \mathcal{C}).
+\]
+
+The category of simplicial sets also serves as a combinatorial framework to model the homotopy theory of $\infty$-categories.
+More precisely, both Joyal and Lurie independently described a model category structure on $\sSet$ whose weak equivalences are given by a sub-collection of the weak homotopy equivalences called the \textit{categorical equivalences}, cofibrations are injective maps, and fibrant objects are quasi-categories.
+This model category is known as the \textit{Joyal model structure}.
+The Kan--Quillen model structure is a left Bousfield localization of the Joyal model structure obtained by localizing the single morphism $\simplex^1 \to \simplex^0$.
+
+On the other hand, Bergner constructed a model structure on $\Cat_{\simplex}$ having as weak equivalences those maps of simplicially enriched categories that induce a weak homotopy equivalence between the simplicial sets of morphisms and are essentially surjective after passing to the homotopy categories.
+Fibrant objects are categories enriched over Kan complexes.
+This model category is known as the \textit{Bergner model structure}.
+
+The adjunction between rigidification and the homotopy coherent nerve yields an equivalence of homotopy theories modeling the $\infty$-categories.
+More precisely, we have the following statement, which is one of the main results of \cite{dugger2011mappingspaces}.
+
+\begin{proposition} \label{joyalbergner}
+	The adjunction
+	\[
+	\rigid \colon \sSet \leftrightarrows \Cat_{\simplex} :\!\nerve
+	\]
+	induces a Quillen equivalence when $\sSet$ is equipped with the Joyal model structure and $\Cat_{\simplex}$ with the Bergner model structure.
+\end{proposition}
+
+The next result, which is an observation of the second named-author and Zeinalian, relates the cubical cobar construction and the rigidification functor via the triangulation functor as defined in \cref{ss:triangulation and its adjoint}.\todo{Please define the triangulation functor here intuitively providing a reference.}
+
+\begin{proposition} \label{Candgcobar}
+	The composition
+	\[
+	\triangulate \, \ccobar \colon \sSet^0 \to \Mon_{\sSet}
+	\]
+	is naturally isomorphic to
+	\[
+	\rigid \colon \sSet^0 \to \Mon_{\sSet}.
+	\]
+\end{proposition}
+
+The above statement is Proposition 5.3 in \cite{rivera2018cubical}, where $\ccobarE$ is denoted by $\rigid_{\cube_c}$.
+The proof relies on a description of the rigidification functor in terms of necklaces due to Dugger and Spivak \cite{dugger2011rigidification}.
+\cref{Candgcobar} also holds in the many-object setting, but we do not need this level of generality for the purposes of this article.
+
+\subsection{The rigidification functor and Kan's loop group construction}
+
+Denote by
+\[
+\iota \colon \sGrp \to \Mon_{\sSet}
+\]
+the natural fully faithful embedding through which we may regard simplicial groups as simplicial monoids.
+The starting point of the comparison between the rigidification functor and Kan's loop group functor is the following statement about their adjoints, which is Proposition 2.6.2 in \cite{hinich2007deformation}.
+
+\begin{proposition} \label{p:hinich}
+	For any simplicial group $\mathcal{G} \in \sGrp$, there is a natural weak homotopy equivalence
+	\[
+	\psi_{\mathcal{G}} \colon \classifying(\mathcal{G}) \xrightarrow{\simeq} \nerve\iota(\mathcal{G}).
+	\]
+\end{proposition}
+
+We now relate the rigidification functor $\rigid$ and the Kan loop group functor $\kan$.
+First we introduce some notation.
+The embedding $\iota \colon \sGrp \to \Mon_{\sSet}$ has a left adjoint, which we denote by
+\[
+\mathcal{L} \colon \Mon_{\sSet} \to \sGrp.
+\]
+More precisely, this is the functor from simplicial monoids to simplicial groups given by formally inverting all morphisms (degree by degree) subject to the usual relations.
+If $M \in \Mon_{\sSet}$ and $A \subseteq M_0$ is a subset of $0$-morphisms, we denote by $\mathcal{L}_AM$ the simplicial monoid obtained by formally inverting the elements of $A$, i.e. the pushout
+\[
+\mathcal{L}_AM= M \coprod_A \mathcal{L}F(A),
+\]
+where $F(A)$ is the monoid freely generated by the set $A$ regarded as a discrete simplicial monoid.
+
+\begin{lemma} \label{CandG}
+	There are natural weak equivalences of simplicial monoids
+	\[
+	\localization_{X_1} \! \rigid(X) \xra{\simeq} \localization \rigid(X) \xra{\simeq} \kan(X)
+	\]
+	for any reduced simplicial set $X$.
+\end{lemma}
+
+\begin{proof}
+	Since $\rigid$ is a left Quillen functor and every simplicial set $X$ is cofibrant in the Joyal model structure, it follows from \cref{joyalbergner} that the simplicially enriched category $\rigid(X)$ is cofibrant.
+	Hence, Proposition 9.5 of \cite{dwyer1980simplicial} implies that the natural inclusion $\localization_{X_1} \! \rigid(X) \to \localization \rigid(X)$ is a weak equivalence of simplicially enriched categories.
+
+	By \cref{p:hinich} we have that $\psi_{\kan(X)} \colon \classifying \kan(X) \xrightarrow{\simeq} \nerve \iota(\kan(X))$ is a weak homotopy equivalence for any reduced simplicial set $X$.
+	By \cref{p:kan adjuntion}, we have a weak homotopy equivalence $X \xrightarrow{\simeq} \classifying \kan(X)$ given by the unit of the adjunction.
+	Composing these two maps we obtain a weak homotopy equivalence
+	\[
+	X \xrightarrow{\simeq} \nerve\iota(\kan(X)).
+	\]
+	The Quillen equivalence of \cref{joyalbergner} localizes to a Quillen equivalence
+	\[
+	\localization \rigid \colon \sSet^0 \leftrightarrows \sGrp \colon \nerve \iota
+	\]
+	when $\sSet^0$ is equipped with the Kan--Quillen model structure and $\sGrp$ with the model structure of \cref{p:kan adjuntion}.
+	It follows that the adjoint of the weak homotopy equivalence $X \xra{\simeq} \nerve \iota(\kan(X))$ is a weak equivalence of simplicial groups
+	\[
+	\localization \rigid(X) \xra{\simeq} \kan(X),
+	\]
+	which finishes the proof.
+\end{proof}
+
+\subsection{Localized cubical cobar and the Kan loop group}
+
+We have the following comparison between the triangulation of the localized geometric cobar construction and the Kan loop group.
+
+\begin{corollary} \label{widehatgcobarandG}
+	There is a natural weak equivalence of simplicial monoids
+	\[
+	\triangulate \ccobarE(X) \xrightarrow{\simeq} \kan(X)
+	\]
+	for any reduced simplicial set $X$.
+\end{corollary}
+
+\begin{proof}
+	After localizing the isomorphism of \cref{Candgcobar} at the $1$-simplices, we obtain a natural isomorphism of simplicial monoids
+	\[
+	\triangulate \ccobarE(X) \cong \localization_{X_1} \! \rigid(X).
+	\]
+	Hence, the result follows from \cref{CandG}.
+\end{proof}
+
+The above statement should be understood as a lift of Hess and Tonk's quasi-isomorphism between the extended cobar construction and the chains on the Kan loop group to the level of simplicial sets.
+In fact, it is explained in \cite{minichello2021path} how the weak equivalence
+\[
+\triangulate \ccobarE(X) \cong \mathcal{L}_{X_1} \! \rigid(X) \to \kan(X)
+\]
+obtained in \cref{widehatgcobarandG}
+can be described explicitly in terms of the Szczarba operators used in \cite{hess2010cobar}.
+More precisely, Hess and Tonk's comparison map is precisely the composition
+\[
+\adamsE(X) = \cchains(\ccobarE(X)) \to \schains(\triangulate\ccobarE(X)) \to \schains (\kan(X)),
+\]
+where the first map is determined by the shuffle quasi-isomorphism
+$\cchains(\cube^n) \to \schains\!\big((\simplex^1)^{\times n}\big)$ from a cube to its triangulation and the second map is induced by the weak equivalence of \cref{widehatgcobarandG} after applying chains.

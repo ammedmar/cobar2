@@ -1,0 +1,41 @@
+\section{Kan's loop group construction}
+
+Recall that simplicial sets form a combinatorial model for the homotopy theory of spaces.
+This may be expressed using the language of model categories by stating that the adjoint functors
+\[
+\bars{\ \cdot\ } \colon \sSet \leftrightarrows \mathsf{Top} :\! \sSing
+\]
+defines a Quillen equivalence between model category structures, where $\Top$ is equipped with the classical \textit{Quillen model structure} and $\sSet$ with the \textit{Kan--Quillen model structure}.
+We refer to the induced model structure on $\sSet^0$ by the same name.
+
+The based loop space of a reduced simplicial set may be modeled combinatorially through the \textit{Kan loop group functor}
+\[
+\kan \colon \sSet^0 \to \sGrp
+\]
+defined as follows.
+For any reduced simplicial set $X$ each $\kan(X)_n$ is the group with one generator $\overline{x}$ for every simplex $x \in X_{n+1}$ modulo the relation $\overline{s_0(x)} = e$, where $e$ denotes the identity element of the group.
+
+The face and degeneracy maps are defined by the following equations:
+\[
+\delta_0(\overline{x}) = \overline{\delta_1(x)} \cdot (\overline{\delta_0(x)})^{-1}, \qquad \quad
+\delta_n(\overline{x}) = \overline{\delta_{n+1}(x)} \text{ for } n>0, \qquad \quad
+s_n(\overline{x}) = \overline{s_{n+1}(x)}.
+\]
+
+Berger showed that this construction models the based loop space as a topological monoid.
+More precisely, he showed that for any reduced simplicial set $X$, the geometric realization of the Kan loop group $\bars{\kan(X)}$ is weak homotopy equivalent, as a topological monoid, to the based loop space $\loops \bars{X}$ on the geometric realization of $X$ \cite{berger1995loops}.
+
+Using Kan's ideas, Quillen constructed a model category structure on the category $\sGrp$ of simplicial groups determined by
+weak equivalences and fibrations being maps of simplicial groups whose underlying maps of simplicial sets are weak homotopy equivalences and Kan fibrations, respectively.
+We call this model category structure the \textit{Kan model structure} on $\sGrp$.
+
+The Kan loop group functor has a right adjoint $\classifying \colon \sGrp \to \sSet^0$ modeling the classifying space of a simplicial group.
+As proven for example in \cite[Chapter V]{goerss2009simplicial} we have the following.
+
+\begin{proposition} \label{p:kan adjuntion}
+	The adjunction
+	\[
+	\kan \colon \sSet^0 \leftrightarrows \sGrp :\! \classifying
+	\]
+	defines a Quillen equivalence when $\sSet^0$ and $\sGrp$ are equipped respectively with the Kan--Quillen and the Kan model category structures.
+\end{proposition}
