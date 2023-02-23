@@ -5,9 +5,9 @@
 
 \section{\pdfEinfty-structures}
 
-\TBW
+The goal of this section is to construct, for any reduced simplicial set, a natural zig-zag of quasi-isomorphisms relating its extended cobar construction and the chains on its Kan loop group as $E_\infty$-coalgebras.
 
-\subsection{$\cM$-bialgebra}\label{ss:e-infty extension}
+\subsection{$\cM$-bialgebras and $\UM$-coalgebras}\label{ss:e-infty extension}
 
 An \textit{$\cM$-bialgebra} is a counital coalgebra $(C, \copr, \aug)$ together with a degree $1$ linear map $\pr \colon C \ot C \to C$ satisfying
 \[
@@ -27,30 +27,42 @@ As proven in \cite{medina2021cobar}, the counital coalgebra structure on the ten
 \end{equation}
 for any $a,c \in C$ and $b,d \in C'$.
 
-For any integer $n$, the \textit{join product} $\ast \colon \chains(\simplex^n)^{\ot 2} \to \chains(\simplex^n)$ is the natural degree~$1$ linear map defined by
-\begin{equation*}
+\begin{example*}
+	For any integer $n$, the \textit{join product} $\ast \colon \chains(\simplex^n)^{\ot 2} \to \chains(\simplex^n)$ is the natural degree~$1$ linear map defined by
+	\begin{equation*}
 	\left[v_0, \dots, v_p \right] \pr \left[v_{p+1}, \dots, v_q\right] =
 	\begin{cases} (-1)^{p} \sign(\pi) \left[v_{\pi(0)}, \dots, v_{\pi(q)}\right] & \text{ if } v_i \neq v_j \text{ for } i \neq j, \\
-		\hfil 0 & \text{ if not}, \end{cases}
-\end{equation*}
-where $\pi$ is the permutation that orders the vertices.
-It is proven in \cite{medina2020prop1} that the Alexander--Whitney counital coalgebra structure together with the join product make $\chains(\simplex^n)$ into a natural $\cM$-bialgebra and, consequently, into a natural $E_\infty$-coalgebra.
-We mention that this structure is induced by one preset at the level of geometric realizations \cite{medina2021prop2}.
+	\hfil 0 & \text{ if not}, \end{cases}
+	\end{equation*}
+	where $\pi$ is the permutation that orders the vertices.
+	It is proven in \cite{medina2020prop1} that the Alexander--Whitney counital coalgebra structure together with the join product make $\chains(\simplex^n)$ into a natural $\cM$-bialgebra and, consequently, into a natural $\UM$-coalgebra, which extends along the Yoneda inclusion to the chains on any simplicial set.
+	We mention that this structure is induced by one preset at the level of geometric realizations \cite{medina2021prop2}.
+\end{example*}
 
-Using the tensor product structure, we deduce a natural $\cM$-bialgebra structure on the chains of representable cubical sets
-\[
-\chains\big(\cube^n\big) =
-\chains(\simplex^1) \ot\dotsb\ot \chains(\simplex^1),
-\]
-and, consequently, a natural $E_\infty$-coalgebra structure, which extends along the Yoneda inclusion to the chains on any cubical set $X$.
+\begin{example*}
+	Using Formula \eqref{eq:monoidal_product}, we deduce a natural $\cM$-bialgebra structure on the chains of representable cubical sets
+	\[
+	\chains\big(\cube^n\big) =
+	\chains(\simplex^1) \ot\dotsb\ot \chains(\simplex^1),
+	\]
+	and, consequently, a natural $\UM$-coalgebra structure, which extends along the Yoneda inclusion to the chains on any cubical set as a monoidal functor (\cite[Theorem~5]{medina2021cobar}).
+\end{example*}
 
-Since the $\EZ$ map is a morphism of counital coalgebras, we conclude that $\HT$ is as well.
-As shown in \cite[$\S$5.4]{medina2022cube_einfty}, $\EZ$ does not preserve the $E_\infty$-coalgebra structure, so we will need more work to compare $\adamsE(X)$ and $\schains(\kan(X))$ as $E_\infty$-coalgebras.
-We now turn to this endeavor.
+Since for any cubical set $Y$, the Eilenberg--Zilber map $\EZ \colon \cchains(Y) \to \schains(\triangulate Y)$ is a coalgebra map, we deduce from Factorization~\eqref{e:factorization of HT} that the Hess--Tonks map $\HT \adamsE(X) \to \schains(\kan(X))$ is as well.
+A result proven first by Franz \cite{franz2020szczarba}.
+\todo{Is this attribution correct?}
+Regarding the higher structure we have the following.
+
+\begin{example*}
+	\TBW\todo{An example using \cite[$\S$5.4]{medina2022cube_einfty} can be surely constructed.}
+\end{example*}
+
+It is not surprising that $\HT$ does not respect higher coproducts since $\EZ$ does not either.
+In the next subsection we review a map $\CS \colon \schains(X) \to \cchains(\cubify X)$ that does preserve an $E_\infty$-coalgebra extension for every simplicial set $X$.
 
 \subsection{Cartan--Serre map}
 
-In \cite[p.442]{serre1951homologie}, the cellular map $\cs \colon \gcube^n \to \gsimplex^n$ sending
+In \cite[p.442]{serre1951homologie}, the cellular map $\gcube^n \to \gsimplex^n$ sending
 $(x_1, \dots, x_n)$ to
 \[
 (x_1,\ x_1 x_2, \, \dots \, , \ x_1 x_2 \dotsm x_n)
@@ -58,14 +70,13 @@ $(x_1, \dots, x_n)$ to
 was used to define a natural quasi-isomorphism of coalgebras $\sSchains(\fX) \to \cSchains(\fX)$ for any topological space $\fX$.
 As proven in \cite[\S5.7]{medina2022cube_einfty}, this chain map factors as a composition
 \[
-\schains(\sSing(\fX)) \xra{\CS_{\sSing(\fX)}}
+\schains(\sSing(\fX)) \xra{\CS}
 \cchains(\cU \sSing(\fX)) \to
 \cchains(\cSing(\fX)),
 \]
 where the first chain map, referred to as the \textit{Cartan--Serre map}, is a quasi-isomorphism defined for any simplicial set, and the second chain map is induced from a cubical map.
 
-The Cartan--Serre map $\CS_X$ is not a morphism of $\UM$-coalgebras in general (\cite[$\S$5.4]{medina2022cube_einfty}), but it does preserve an $E_\infty$-coalgebra structure generated by a subset of operations, which we refer to as a \textit{restricted $\UM$-coalgebra} (\cite[\S5.6]{medina2022cube_einfty}).
-The generating cooperations are of the form
+The Cartan--Serre map $\CS$ is not a morphism of $\UM$-coalgebras in general (\cite[$\S$5.4]{medina2022cube_einfty}), but it does preserve an $E_\infty$-coalgebra structure generated by cooperations of the form
 \[
 (\pr^{k_1} \ot\dotsb\ot \pr^{k_r}) \circ \tau \circ \copr^{k},
 \]
@@ -73,72 +84,39 @@ where $\tau$ is the inverse of a $(k_1+1,\dots,k_r+1)$-shuffle permutation with 
 \[
 \pr^0 = \id, \quad \pr^1 = \pr, \quad \pr^{k_i} = \pr \circ (\pr^{k_i-1} \ot\, \id).
 \]
-Combining this map with the unit $\xi$ of the adjuntion $(\triangulate, \cU)$ we have the following.
+We refer to such an $E_\infty$-coalgebra as a \textit{restricted $\UM$-coalgebra} (\cite[\S5.6]{medina2022cube_einfty}).
 
-\begin{lemma}
+Combining the Cartan--Serre map with the unit $\xi$ of the adjuntion $(\triangulate, \cU)$ we have the following.
+
+\begin{lemma}[{\cite[Corollary 15]{medina2022cube_einfty}}]\label{l:zig-zag reduced}
 	For any cubical set $Y$,
 	\[
-	\cchains(Y) \xra{\cchains(\xi_Y)}
-	\cchains(\cubify{\triangulate Y})
-	\xla{\CS_{\cT Y}} \schains(\triangulate Y),
+	\cchains(Y) \xra{\cchains(\xi)}
+	\cchains(\cubify{\triangulate Y}) \xla{\CS}
+	\schains(\triangulate Y),
 	\]
 	is a natural zig-zag of quasi-isomorphisms of restricted $\UM$-coalgebras.
 \end{lemma}
 
-\subsection{The functor $\adamsE_{\UM}$} \label{s:ahatum}
+\subsection{The cobar construction as an $E_\infty$-model of Kan's loop group}
 
-Define the functor
+Let $X$ be a reduced simplicial set.
+By \cref{c:e-ccobar and e-cobar}, the extended cobar construction $\adamsE(X)$ is isomorphic to the chains of the cubical monoid $\ccobarE(X)$.
+We can use this isomorphism to transfer the $\UM$-coalgebra structure on $\cchains(\ccobarE(X))$ to $\adamsE(X)$.
+Additionally, \cref{widehatgcobarandG} induces a quasi-isomorphism of $\UM$-coalgebras
 \[
-\adamsEA \colon \sSet^0 \to \Mon_{\coAlg}
+\schains(\triangulate\ccobarE(X)) \to \schains(\kan(X)).
 \]
-as the composition
-\[
-\adamsEA = \cchainsA \ccobarE.
-\]
-Similarly define
-\[
-\adamsE_{\UM} \colon \sSet^0 \to \Mon_{\coAlg_{\UM}}
-\]
-as the composition
-\[
-\adamsE_{\UM} = \cchainsUM \ccobarE.
-\]
+Combining these constructions with \cref{l:zig-zag reduced} we obtain the following zig-zag of quasi-isomorphisms relating the extended cobar construction and the chains of the Kan loop group as $E_\infty$-coalgebras.
 
-It follows directly from the definitions that $\adamsEA$ is a lift of $\adamsE$, and $\adamsE_{\UM}$ is a lift $\adamsEA$.
-This discussion constitutes the first half of \cref{t:2nd main thm in the intro}, which we collect in the following.
-
-\begin{lemma} \label{l:AhatUM}
-	The functor $\adamsEUM \colon \sSet^0 \to \Mon_{\coAlg_\UM}$ fits into a commutative diagram
+\begin{theorem}
+	For any reduced simplicial set $X$,
 	\[
-	\begin{tikzcd}[row sep=small]
-		& \Mon_{\coAlg_\UM} \arrow[d] \\
-		& \Mon_{\coAlg} \arrow[d] \\
-		\sSet^0
-		\arrow[r, "\adamsE"', ]
-		\arrow[ru, "\adamsEA"', out=45, in=180]
-		\arrow[ruu, "\adamsEUM", out=90, in=180]
-		& \Mon_{\Ch}.
-	\end{tikzcd}
+	\adamsE(X) \cong
+	\cchains(\ccobarE(X)) \xra{\cchains(\xi)}
+	\cchains(\cubify{\triangulate\ccobarE(X)}) \xla{\CS}
+	\schains(\triangulate\ccobarE(X)) \to
+	\schains(\kan(X))
 	\]
-\end{lemma}
-
-
-\subsection{The extended cobar construction and the chains on the Kan loop group}
-
-Applying \cref{l:zigzag} to $Y = \ccobarE(X)$, we obtain that $\schainsUSL (\triangulate \ccobarE(X))$ and $\cchainsUSL(\ccobarE(X)) = \adamsE_{\USL}(X)$ are quasi-isomorphic via a zig-zag of natural maps of $\USL$-coalgebras.
-By \cref{widehatgcobarandG} we have a weak equivalence of simplicial monoids
-\[
-\triangulate \ccobarE(X) \xrightarrow{\simeq} \kan(X)
-\]
-for any reduced simplicial set $X$.
-By naturality, we have an induced quasi-isomorphism of $\USL$-coalgebras
-\[
-\schainsUSL \big( \triangulate \ccobarE(X) \big) \xra{\simeq}
-\schainsUSL (\kan(X)).
-\]
-Therefore, $\adamsE_{\USL}(X)$ and $\schainsUSL(\kan(X))$ are quasi-isomorphic through a zig-zag of natural maps of $\USL$-coalgebras, as desired.
-We summarize this discussion in the following lemma, constituting the second half of \cref{t:2nd main thm in the intro}.
-
-\begin{lemma}\label{l:AhatandGX}
-	For any reduced simplicial set $X$, there is a zig-zag of natural quasi-isomorphisms of $\USL$-coalgebras between $\adamsE_\USL(X)$ and $\schainsUSL(\kan(X))$.
-\end{lemma}
+	is a natural zig-zag of quasi-isomorphisms of restricted $\UM$-coalgebras.
+\end{theorem}

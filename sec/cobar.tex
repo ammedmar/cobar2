@@ -2,15 +2,15 @@
 
 \section{Extended cobar construction}
 
-%The proof that Adams' map in \cref{t:1st main thm in the intro} is a quasi-isomorphism relies on the fibrancy of the singular complex.
-%In general, for an arbitrary reduced simplicial set $X$, the cobar construction $\cobar\schainsA(X)$ is not quasi-isomorphic to $\cSchains(\loops|X|)$, the singular cubical chains on the based loop space of the geometric realization of $X$.
-%This is true, however, if $X$ is $1$-connected.
+The proof that Adams' map in \cref{t:1st main thm in the intro} is a quasi-isomorphism relies on the fibrancy of the singular complex.
+In general, for an arbitrary reduced simplicial set $X$, the cobar construction $\cobar\schainsA(X)$ is not quasi-isomorphic to $\cSchains(\loops|X|)$, the singular cubical chains on the based loop space of the geometric realization of $X$.
+This is true, however, if $X$ is $1$-connected.
 
 In \cite{hess2010cobar}, it is described how to formally invert the elements of $X_1$ inside $\cobar \schainsA(X)$ to obtain the correct quasi-isomorphism type.
 The resulting model, called the \textit{extended cobar construction}, is then compared, as an algebra, to the chains on the Kan loop group construction $\kan(X)$.
 We now review these constructions and
 %, in \cref{ss:extended cubical cobar},
-reinterpret them in categorical terms.
+reinterpret them in categorical terms.\todo{This intro depends on removed content, so please rewrite it.}
 
 \subsection{Extended cobar construction}
 
@@ -60,11 +60,8 @@ to be the composition of functors $\ccobarE = \cP_{!} \ncobarE$.
 
 As an immediate consequence of \cref{l:ccobar and cobar}, we obtain the following isomorphism after localizing.
 
-\begin{corollary}
-	There is a natural isomorphism of functors
-	\[
-	\cchains \ccobarE \, \cong \adamsE \colon \sSet^0 \to \Mon_{\Ch}.
-	\]
+\begin{corollary}\label{c:e-ccobar and e-cobar}
+	The functors $\cchains\ccobarE$ and $\adamsE$ from $\sSet^0$ to $\Mon_{\Ch}$ are a natural isomorphic.
 \end{corollary}
 
 \begin{proof}

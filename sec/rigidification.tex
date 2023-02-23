@@ -2,6 +2,10 @@
 
 \section{Categorical comparison}
 
+\subsection{Triangulation and cubification}
+
+\TBW
+
 \subsection{Rigidification and homotopy coherent nerve}\label{ss:rigidification}
 
 In order to relate the functors $\ccobarE \colon \sSet^0 \to \Mon_{\cSet}$ and $\kan \colon \sSet^0\to \sGrp$ we introduce a third construction, the \textit{rigidification functor}
@@ -54,6 +58,8 @@ More precisely, we have the following statement, which is one of the main result
 	\]
 	induces a Quillen equivalence when $\sSet$ is equipped with the Joyal model structure and $\Cat_{\simplex}$ with the Bergner model structure.
 \end{proposition}
+
+\subsection{Rigidification and the extended cobar construction}
 
 The next result, which is an observation of the second named-author and Zeinalian, relates the cubical cobar construction and the rigidification functor via the triangulation functor as defined in \cref{ss:triangulation and its adjoint}.\todo{Please define the triangulation functor here intuitively providing a reference. A useful piece of code
 \[
@@ -166,9 +172,9 @@ In fact, it is explained in \cite{minichello2021path} how the weak equivalence
 obtained in \cref{widehatgcobarandG}
 can be described explicitly in terms of the Szczarba operators used in \cite{hess2010cobar}.
 More precisely, Hess and Tonk's comparison map is precisely the composition
-\[
-\HT \colon \adamsE(X) = \cchains(\ccobarE(X)) \xra{\EZ} \schains(\triangulate\ccobarE(X)) \to \schains(\kan(X)),
-\]
+\begin{equation}\label{e:factorization of HT}
+	\HT \colon \adamsE(X) \cong \cchains(\ccobarE(X)) \xra{\EZ} \schains(\triangulate\ccobarE(X)) \to \schains(\kan(X)),
+\end{equation}
 where the first map is determined by the shuffle quasi-isomorphism
 $\cchains(\cube^n) \to \schains\!\big((\simplex^1)^{\times n}\big)$ from a cube to its triangulation and the second map is induced by the weak equivalence of \cref{widehatgcobarandG} after applying chains.
 \todo{I would suggest to the "shuffle quasi-isomorphism" as the Eilenberg--Zilber map using $\xra{\EZ}$ above.}
